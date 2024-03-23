@@ -1,0 +1,76 @@
+Basic Animation
+
+Sources:
+https://opengameart.org/content/meteor
+
+Pseudocode:
+import pygame
+import random
+
+def main():
+	pygame.init(), initiazing pygame modules for use in code
+	screen = pygame.display.set_mode((640,480)), in order to set the boundaries of the pygame window that the user can see
+	pygame.display.set_caption("UFO!"), which will be the title of the dsiplay window tab
+	background = pygame.Surface(screen.get_size()), set the size of the pygame area equal to the screen boundaries
+	background.convert the background, in order to be able to apply properties to it
+	background.fill("blue")
+	
+	load the meteor image equal to a variable
+	load sky image equal to a variable
+	load ufo image equal to a variable
+	convert alpha to ufo, sky, and meteor in order to load the associated images
+
+	scale the ufo, sky, and meteor apprirately, with the sky taking up the who visible screen
+	set meteor x position = 0
+	set meteo y postion = 200
+	set ufo x position = 100
+	set ufo y position = 100
+
+	clock = pygame.time.Clock(), in oder to be able to update the screen and move image postion
+	keepGoing = True
+
+	while keepGoing:
+		clock.tick(30), setting the update time
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				keepGoing = False, stopping the game if you exit the game window
+		add to meteor x a random int from 1 to 5
+		add to meteor y a raondom int from 1 to 10
+		add to ufo x a random int from -5 to 5
+		add to ufo y a  random int from -10 to 10
+		rotate the meteor 90 degrees each blit
+		
+		if meteor x is greater than the screen width:
+			reset x position to 0
+		if meteor y is greater tahn the screen width:
+			reset y positon to 0
+		if ufo y is greaeter than 400:
+			subtract 10 from its postion
+		if ufo x is greater than 600:
+			subtract 5 from its positon
+		if ufo x is less than 0:
+			add 5 to its postion
+		if ufo y is less than 0:
+			add 10 to its positon
+		screen.blit background at postion 0,0
+		screen.blut sky at position 0,0
+		screen.blit the ufo at its x and y position
+		screen.blit the meteor at its x and y position
+
+		pygame.display.flip() in order to display it in the best way for the user
+
+	pygame.quit()
+if __name__ == "__main__":
+	main()
+
+variable list:
+background
+meteor
+meteor_x
+meteor_y
+ufo
+ufo_x
+ufo_y
+sky
+keepGoing
+
